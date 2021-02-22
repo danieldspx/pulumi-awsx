@@ -387,7 +387,7 @@ export interface APIArgs {
      * Additional optional args that can be passed along to the aws.apigateway.RestApi created by the
      * awsx.apigateway.API.
      */
-    restApiArgs?: RestApiArgs;
+    restApiArgs?: aws.apigateway.RestApiArgs;
 
     /**
      * Additional optional args that can be passed along to the aws.apigateway.Stage created by the
@@ -400,43 +400,6 @@ export interface APIArgs {
      * the awsx.apigateway.API.
      */
     deploymentArgs?: DeploymentArgs;
-}
-
-/**
- * Additional optional args that can be passed along to the RestApi created by the
- * awsx.apigateway.API.
- */
-export interface RestApiArgs {
-    /**
-     * The name of the REST API.  Defaults to the name of the awsx.apigateway.Api if unspecified.
-     */
-    name?: pulumi.Input<string>;
-
-    /**
-     * The list of binary media types supported by the RestApi. Defaults to `* / *` if unspecified.
-     */
-    binaryMediaTypes?: pulumi.Input<pulumi.Input<string>[]>;
-
-    /**
-     * The source of the API key for requests. Valid values are HEADER (default) and AUTHORIZER.
-     */
-    apiKeySource?: pulumi.Input<string>;
-    /**
-     * The description of the REST API
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Nested argument defining API endpoint configuration including endpoint type. Defined below.
-     */
-    endpointConfiguration?: pulumi.Input<aws.types.input.apigateway.RestApiEndpointConfiguration>;
-    /**
-     * Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
-     */
-    minimumCompressionSize?: pulumi.Input<number>;
-    /**
-     * JSON formatted policy document that controls access to the API Gateway.
-     */
-    policy?: pulumi.Input<string>;
 }
 
 /**
